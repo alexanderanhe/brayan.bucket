@@ -1,0 +1,79 @@
+{
+  "meta": {
+    "title": "Brayan Angulo | Analista Deportivo de Soccer",
+    "description": "Análisis táctico y estadístico de soccer con reportes claros de rendimiento, scouting y partidos.",
+    "ogTitle": "Brayan Angulo | Analista Deportivo",
+    "ogDescription": "Reportes tácticos, scouting y análisis de partidos para decisiones basadas en datos.",
+    "twitterTitle": "Brayan Angulo | Analista Deportivo",
+    "twitterDescription": "Análisis táctico y estadístico de soccer con reportes claros de rendimiento.",
+    "image": "/social.webp"
+  },
+  "colorPickerLabel": "Color",
+  "labels": {
+    "carouselPrev": "Anterior",
+    "carouselNext": "Siguiente",
+    "colorPickerAria": "Selecciona color primario"
+  },
+  "carousel": {
+    "slides": [
+      {
+        "duration": 11000,
+        "title": "Análisis táctico y estadístico para equipos de alto rendimiento.",
+        "description": "Reportes claros de posesión, presión, xG y patrones de juego para decidir con datos antes del siguiente partido."
+      },
+      {
+        "duration": 9000,
+        "title": "Scouting con foco en fases del juego y patrones de presión.",
+        "description": "Detecta tendencias en transiciones, altura defensiva y eficacia en recuperaciones con métricas accionables."
+      },
+      {
+        "duration": 12000,
+        "title": "Informes rápidos para staff técnico en tiempo real.",
+        "description": "Resúmenes claros con highlights de posesión y eficacia en campo rival para ajustar el plan durante el partido."
+      }
+    ]
+  },
+  "portrait": {
+    "src": "/bray.webp",
+    "alt": "Brayan Angulo"
+  },
+  "more": {
+    "label": "More",
+    "image": {
+      "src": "/apps.webp",
+      "alt": "Cancha de fútbol"
+    },
+    "links": [
+      {
+        "label": "Generador",
+        "badge": "App",
+        "href": "/generate"
+      }
+    ]
+  },
+  "profile": {
+    "eyebrow": "Perfil jugador",
+    "body": "Evaluación individual con métricas de impacto, mapa de calor y comparativos por posición para detectar fortalezas y áreas de mejora."
+  },
+  "cta": {
+    "eyebrow": "¿Listo para el análisis?",
+    "title": "Agenda una revisión"
+  },
+  "socials": [
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "href": ""
+    },
+    {
+      "id": "twitter",
+      "label": "Twitter",
+      "href": ""
+    },
+    {
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "href": ""
+    }
+  ]
+}

@@ -1,0 +1,464 @@
+{
+  "label": "Generador Scout Group",
+  "template": "analysis.html",
+  "sections": [
+    {
+      "title": "1. Detalles del Partido y Escudos",
+      "columns": 2,
+      "fields": [
+        { "name": "matchDate", "label": "Fecha", "type": "date" },
+        { "name": "homeTeam", "label": "Equipo Local", "type": "text", "placeholder": "America" },
+        { "name": "competition", "label": "Competicion", "type": "text", "placeholder": "LIGA MX Femenil" },
+        {
+          "name": "homeCrest",
+          "label": "Escudo Local (PNG/JPG)",
+          "type": "image",
+          "accept": "image/png,image/jpeg,image/webp"
+        },
+        { "name": "stadium", "label": "Estadio", "type": "text" },
+        { "name": "awayTeam", "label": "Equipo Visitante", "type": "text", "placeholder": "Tigres" },
+        {
+          "name": "awayCrest",
+          "label": "Escudo Visitante (PNG/JPG)",
+          "type": "image",
+          "accept": "image/png,image/jpeg,image/webp"
+        },
+        { "name": "result", "label": "Resultado", "type": "text", "placeholder": "3 - 3" },
+        { "name": "scout", "label": "Scout", "type": "text", "span": 2 },
+        {
+          "name": "reportLogo",
+          "label": "Logo Principal (PNG/JPG)",
+          "type": "image",
+          "accept": "image/png,image/jpeg,image/webp",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "2. Formaciones (Imagenes Pizarras)",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "boardHome",
+          "label": "Pizarra Local",
+          "type": "image",
+          "width": "100%",
+          "accept": "image/png,image/jpeg,image/webp"
+        },
+        {
+          "name": "boardAway",
+          "label": "Pizarra Visitante",
+          "type": "image",
+          "width": "100%",
+          "accept": "image/png,image/jpeg,image/webp"
+        }
+      ]
+    },
+    {
+      "title": "3. Alineacion y Cambios",
+      "fields": [
+        {
+          "name": "lineup",
+          "label": "XI Inicial y Suplentes",
+          "type": "table",
+          "alias": "lineup",
+          "dynamic": true,
+          "rows": 2,
+          "columns": [
+            { "name": "pos", "label": "Pos" },
+            { "name": "starter", "label": "Titular" },
+            { "name": "pos2", "label": "Pos" },
+            { "name": "sub", "label": "Suplente" }
+          ]
+        },
+        {
+          "name": "changes",
+          "label": "Cambios de Jugadoras",
+          "type": "table",
+          "alias": "changes",
+          "dynamic": true,
+          "rows": 6,
+          "columns": [
+            { "name": "minute", "label": "Minuto" },
+            {
+              "name": "playerOut",
+              "label": "Jugadora Sale",
+              "source": [
+                { "table": "lineup", "columns": ["starter", "sub"] }
+              ]
+            },
+            {
+              "name": "playerIn",
+              "label": "Jugadora Entra",
+              "source": [
+                { "table": "lineup", "columns": ["starter", "sub"] }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "4. Analisis Tactico",
+      "fields": [
+        {
+          "name": "summary",
+          "label": "Vision general",
+          "type": "textarea",
+          "placeholder": "Escribe aqui...",
+          "span": 2
+        },
+        {
+          "name": "summaryVideo",
+          "label": "Enlace Video",
+          "type": "url",
+          "placeholder": "URL del video",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "Estilo de Juego",
+      "columns": 2,
+      "fields": [
+        {
+          "name": "styleOffense",
+          "label": "Estilo Ofensivo",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Indirecto/Combinativo", "value": "Indirecto/Combinativo" },
+            { "label": "Directo", "value": "Directo" },
+            { "label": "Contraataque", "value": "Contraataque" }
+          ]
+        },
+        {
+          "name": "styleDefense",
+          "label": "Estilo Defensivo",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Plegada", "value": "Plegada" },
+            { "label": "Desplegada", "value": "Desplegada" }
+          ]
+        },
+        {
+          "name": "attackWidth",
+          "label": "Ataque - Ocupacion Amplitud",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Distancias cortas", "value": "Distancias cortas" },
+            { "label": "Amplios", "value": "Amplios" }
+          ]
+        },
+        {
+          "name": "attackDepth",
+          "label": "Ataque - Ocupacion Profundidad",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Poco profundos", "value": "Poco profundos" },
+            { "label": "Muy profundos", "value": "Muy profundos" },
+            { "label": "Baja", "value": "Baja" }
+          ]
+        },
+        {
+          "name": "attackMobility",
+          "label": "Ataque - Movilidad",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Posicionales", "value": "Posicionales" },
+            { "label": "Dinámicos", "value": "Dinámicos" }
+          ]
+        },
+        {
+          "name": "attackCirculation",
+          "label": "Ataque - Circulacion Balon",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Juego Interior", "value": "Juego Interior" },
+            { "label": "Juego Exterior", "value": "Juego Exterior" }
+          ]
+        },
+        {
+          "name": "defenseAttitude",
+          "label": "Defensa - Actitud",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Presión", "value": "Presión" },
+            { "label": "Repliegue", "value": "Repliegue" }
+          ]
+        },
+        {
+          "name": "defenseZone",
+          "label": "Defensa - Zona Robo",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Interior", "value": "Interior" },
+            { "label": "Exterior", "value": "Exterior" }
+          ]
+        },
+        {
+          "name": "defenseMoment",
+          "label": "Defensa - Momento Robo",
+          "type": "select",
+          "options": [
+            { "label": "-", "value": "" },
+            { "label": "Inmediato (Tras pérdida)", "value": "Inmediato (Tras pérdida)" },
+            { "label": "Mediato (Organizado)", "value": "Mediato (Organizado)" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Fase Ofensiva",
+      "fields": [
+        {
+          "name": "offenseVideo",
+          "label": "Video General de la Fase (Opcional)",
+          "type": "url",
+          "placeholder": "URL Video Completo de Fase Ofensiva",
+          "span": 2
+        },
+        {
+          "name": "defensiveExit",
+          "label": "Zona Defensiva (Salida)",
+          "type": "textarea",
+          "placeholder": "Analisis de Zona Defensiva (Salida)...",
+          "span": 2
+        },
+        {
+          "name": "defensiveExitVideo",
+          "label": "Enlace Video Zona Defensiva (Salida)",
+          "type": "url",
+          "placeholder": "URL video Zona Defensiva (Salida)",
+          "span": 2
+        },
+        {
+          "name": "creationZone",
+          "label": "Zona Creacion",
+          "type": "textarea",
+          "placeholder": "Analisis de Zona Creacion...",
+          "span": 2
+        },
+        {
+          "name": "creationZoneVideo",
+          "label": "Enlace Video Zona Creacion",
+          "type": "url",
+          "placeholder": "URL video Zona Creacion",
+          "span": 2
+        },
+        {
+          "name": "finalZone",
+          "label": "Zona Finalizacion",
+          "type": "textarea",
+          "placeholder": "Analisis de Zona Finalizacion...",
+          "span": 2
+        },
+        {
+          "name": "finalZoneVideo",
+          "label": "Enlace Video Zona Finalizacion",
+          "type": "url",
+          "placeholder": "URL video Zona Finalizacion",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "Fase Defensiva",
+      "fields": [
+        {
+          "name": "defenseVideo",
+          "label": "Video General de la Fase (Opcional)",
+          "type": "url",
+          "placeholder": "URL Video Completo de Fase Defensiva",
+          "span": 2
+        },
+        {
+          "name": "highBlock",
+          "label": "Bloque Alto",
+          "type": "textarea",
+          "placeholder": "Analisis de Bloque Alto...",
+          "span": 2
+        },
+        {
+          "name": "highBlockVideo",
+          "label": "Enlace Video Bloque Alto",
+          "type": "url",
+          "placeholder": "URL video Bloque Alto",
+          "span": 2
+        },
+        {
+          "name": "midBlock",
+          "label": "Bloque Medio",
+          "type": "textarea",
+          "placeholder": "Analisis de Bloque Medio...",
+          "span": 2
+        },
+        {
+          "name": "midBlockVideo",
+          "label": "Enlace Video Bloque Medio",
+          "type": "url",
+          "placeholder": "URL video Bloque Medio",
+          "span": 2
+        },
+        {
+          "name": "lowBlock",
+          "label": "Bloque Bajo",
+          "type": "textarea",
+          "placeholder": "Analisis de Bloque Bajo...",
+          "span": 2
+        },
+        {
+          "name": "lowBlockVideo",
+          "label": "Enlace Video Bloque Bajo",
+          "type": "url",
+          "placeholder": "URL video Bloque Bajo",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "Transiciones",
+      "fields": [
+        {
+          "name": "transitionVideo",
+          "label": "Video General de la Fase (Opcional)",
+          "type": "url",
+          "placeholder": "URL Video Completo de Transiciones",
+          "span": 2
+        },
+        {
+          "name": "transitionOff",
+          "label": "Ofensiva (Ada-Da)",
+          "type": "textarea",
+          "placeholder": "Analisis de Transicion Ofensiva...",
+          "span": 2
+        },
+        {
+          "name": "transitionOffVideo",
+          "label": "Enlace Video Transicion Ofensiva",
+          "type": "url",
+          "placeholder": "URL video Transicion Ofensiva",
+          "span": 2
+        },
+        {
+          "name": "transitionDef",
+          "label": "Defensiva (Ada-Da)",
+          "type": "textarea",
+          "placeholder": "Analisis de Transicion Defensiva...",
+          "span": 2
+        },
+        {
+          "name": "transitionDefVideo",
+          "label": "Enlace Video Transicion Defensiva",
+          "type": "url",
+          "placeholder": "URL video Transicion Defensiva",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "ASP (Balon Parado)",
+      "fields": [
+        {
+          "name": "aspVideo",
+          "label": "Video General de la Fase (Opcional)",
+          "type": "url",
+          "placeholder": "URL Video Completo de ASP",
+          "span": 2
+        },
+        {
+          "name": "aspOffense",
+          "label": "ASP Ofensivo",
+          "type": "textarea",
+          "placeholder": "Analisis de ASP Ofensivo...",
+          "span": 2
+        },
+        {
+          "name": "aspOffenseVideo",
+          "label": "Enlace Video ASP Ofensivo",
+          "type": "url",
+          "placeholder": "URL video ASP Ofensivo",
+          "span": 2
+        },
+        {
+          "name": "aspDefense",
+          "label": "ASP Defensivo",
+          "type": "textarea",
+          "placeholder": "Analisis de ASP Defensivo...",
+          "span": 2
+        },
+        {
+          "name": "aspDefenseVideo",
+          "label": "Enlace Video ASP Defensivo",
+          "type": "url",
+          "placeholder": "URL video ASP Defensivo",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "Fortalezas",
+      "fields": [
+        {
+          "name": "strengths",
+          "label": "Fortalezas",
+          "type": "textarea",
+          "placeholder": "Fortalezas...",
+          "span": 2
+        },
+        {
+          "name": "strengthsVideo",
+          "label": "Enlace Video",
+          "type": "url",
+          "placeholder": "URL del video",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "Debilidades",
+      "fields": [
+        {
+          "name": "weaknesses",
+          "label": "Debilidades",
+          "type": "textarea",
+          "placeholder": "Debilidades...",
+          "span": 2
+        },
+        {
+          "name": "weaknessesVideo",
+          "label": "Enlace Video",
+          "type": "url",
+          "placeholder": "URL del video",
+          "span": 2
+        }
+      ]
+    },
+    {
+      "title": "Jugadores Destacados",
+      "fields": [
+        {
+          "name": "standoutPlayers",
+          "label": "Jugadores Destacados",
+          "type": "textarea",
+          "placeholder": "Analisis de jugadores destacados...",
+          "span": 2
+        },
+        {
+          "name": "standoutVideo",
+          "label": "Enlace Video",
+          "type": "url",
+          "placeholder": "URL del video",
+          "span": 2
+        }
+      ]
+    }
+  ]
+}

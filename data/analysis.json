@@ -41,16 +41,30 @@
         {
           "name": "boardHome",
           "label": "Pizarra Local",
-          "type": "image",
+          "type": "formation",
+          "teamSource": "homeTeam",
+          "defaultFormation": "4-4-2",
+          "players": 11,
           "width": "100%",
-          "accept": "image/png,image/jpeg,image/webp"
+          "export": {
+            "format": "png",
+            "width": 1200,
+            "height": 1600
+          }
         },
         {
           "name": "boardAway",
           "label": "Pizarra Visitante",
-          "type": "image",
+          "type": "formation",
+          "teamSource": "awayTeam",
+          "defaultFormation": "4-4-2",
+          "players": 11,
           "width": "100%",
-          "accept": "image/png,image/jpeg,image/webp"
+          "export": {
+            "format": "png",
+            "width": 1200,
+            "height": 1600
+          }
         }
       ]
     },
